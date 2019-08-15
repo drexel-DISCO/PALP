@@ -1,4 +1,4 @@
-## A Cycle-Level, Multi-Core CPU Trace Driven PCM-based System Simulator
+## A Cycle-Level, Multi-Core CPU Trace Driven PCM-Based System Simulator
 This simulator is developed by DISCO Lab and has been used in our CASES 2019 submission:
 + Enabling and Exploiting Partition-Level Parallelism (PALP) in Phase Change Memories, **CASES 2019**
 
