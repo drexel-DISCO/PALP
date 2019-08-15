@@ -1,4 +1,4 @@
-## A Cycle-Level CPU Trace Driven Hybrid eDRAM-PCM Full System Simulator
+## A Cycle-Level, Multi-Core CPU Trace Driven PCM-based System Simulator
 This simulator is developed by DISCO Lab and has been used in our CASES 2019 submission:
 + Enabling and Exploiting Partition-Level Parallelism (PALP) in Phase Change Memories, **CASES 2019**
 
@@ -35,4 +35,13 @@ num_of_banks = 8
 num_of_ranks = 4
 num_of_channels = 1
 ```
+3. **Example (1)**: The following code snapshot shows an example of how to simulate a 2-core PCM-based system with an FCFS PCM memory controller.
+```console
+$./PCMSim --config configs/sample-FCFS-32GB-PCM.cfg --cpu_trace 503.bwaves_r.cpu_trace --cpu_trace 503.bwaves_r.cpu_trace --stat_output stats
+```
+4. **Example (2)**: The following code snapshot shows an example of how to simulate a 2-core PCM-based system with a PLP PCM memory controller.
+```console
+$./PCMSim --config configs/sample-PLP-32GB-PCM.cfg --cpu_trace 503.bwaves_r.cpu_trace --cpu_trace 503.bwaves_r.cpu_trace --stat_output stats
+```
+
 
