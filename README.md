@@ -1,11 +1,38 @@
-# A Cycle-level CPU Trace-driven Hybrid eDRAM-PCM Full System Simulator
+## A Cycle-Level CPU Trace Driven Hybrid eDRAM-PCM Full System Simulator
 This simulator is developed by DISCO Lab and has been used in our CASES 2019 submission:
-+ Enabling and Exploiting Partition-Level Parallelism (PALP) in Phase Change Memories, CASES 2019
++ Enabling and Exploiting Partition-Level Parallelism (PALP) in Phase Change Memories, **CASES 2019**
 
-## Dependencies:
+### Dependencies:
 + C++17 and above
 + [Google Protocol Buffers](https://github.com/protocolbuffers/protobuf)
 + C++ Boost Library
 
-## Usage:
-1. **Highly Configurable**: The simulator allows user create 
+### Usage:
+1. **Modular System Components**: The following code snapshot shows an example of how to create a PCM and a shared last-level L2 cache.
+
+```c++
+std::unique_ptr<MemObject> PCM(createMemObject(cfg, Memories::PCM));
+
+std::unique_ptr<MemObject> L2(createMemObject(cfg, Memories::L2_CACHE, isLLC));
+L2->setNextLevel(PCM.get());
+
+```
+2. **Highly Configurable**: The following code snapshot shows an example of how to create a custom configuration file for a shared last-level 4MB 8-way L2 cache and a 32GB PCM.
+```python
+L2_assoc = 8
+L2_size = 4096
+L2_write_only = false
+L2_num_mshrs = 32
+L2_num_wb_entries = 32
+L2_tag_lookup_latency = 12
+
+...
+num_of_word_lines_per_tile = 512
+num_of_bit_lines_per_tile = 2048
+num_of_tiles = 128
+num_of_parts = 64
+num_of_banks = 8
+num_of_ranks = 4
+num_of_channels = 1
+```
+
