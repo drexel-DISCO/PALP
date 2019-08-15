@@ -44,7 +44,7 @@ void FullSystemSimulation(Config &cfg,
     L2->setNextLevel(PCM.get());
     L2->setArbitrator(num_of_cores);
 
-    /* Create Processor */
+    // Create private L1-D-Cache
     std::vector<std::unique_ptr<MemObject>> L1_D_all;
     for (int i = 0; i < num_of_cores; i++)
     {
@@ -56,7 +56,7 @@ void FullSystemSimulation(Config &cfg,
 
         L1_D_all.push_back(std::move(L1_D));
     }
-    
+    // Create MMU
     std::unique_ptr<System::MMU> mmu = std::make_unique<System::MMU> (num_of_cores);
     
     // Create Processor 
